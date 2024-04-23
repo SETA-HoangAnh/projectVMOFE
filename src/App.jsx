@@ -1,4 +1,6 @@
+import DashBoard from "./components/dashboard/DashBoard.jsx";
 import AuthLayout from "./components/layout/AuthLayout.jsx";
+
 
 function App() {
 

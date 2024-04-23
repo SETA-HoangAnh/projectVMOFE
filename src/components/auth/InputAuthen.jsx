@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
-import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
 import CopyrightApp from "../common/Copyright/CopyrightApp.jsx";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DatePicker} from "@mui/x-date-pickers/DatePicker";
@@ -54,7 +54,7 @@ export default function InputAuthen() {
                         Send
                     </Button>
                     <Grid container>
-                        <Grid item xs>
+                        <Grid xs>
                             {/*<Typography component="h1" variant="h5">*/}
                             Number of your google authenticator.
                             {/*</Typography>*/}

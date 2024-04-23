@@ -8,35 +8,50 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
-import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
 import CopyrightApp from "../common/Copyright/CopyrightApp.jsx";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DatePicker} from "@mui/x-date-pickers/DatePicker";
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import * as React from "react";
+import ChangeLang from "../common/ChangeLang.jsx";
+
+
 
 
 export default function NewPassword() {
     return (
         <div>
+            <ChangeLang></ChangeLang>
             <Box sx={{
                 my: 8,
                 mx: 4,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                maxWidth: '600px'
+                justifyContent: 'center'
             }}>
                 {/*Heading login*/}
                 <Avatar sx={{ m: 1, bgcolor: lightBlue[400] }}>
                     <CastleIcon/>
                 </Avatar>
-                <Typography component="h1" variant="h5">
+                <Typography component="h1" variant="h5" sx={{ 
+                        marginBottom: '20px'
+                     }}>
                     New password
                 </Typography>
                 {/*Form*/}
                 <Box component="form" noValidate
-                     sx={{ mt: 1 }}>
+                     sx={{ 
+                        mt: 1,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '32em',
+                        height: '20em'
+                     
+                     }}>
                     <TextField
                         margin="normal"
                         required
@@ -67,7 +82,7 @@ export default function NewPassword() {
                         Change
                     </Button>
                     <Grid container>
-                        <Grid item xs>
+                        <Grid xs>
                             {/*<Typography component="h1" variant="h5">*/}
                             Change your password here.
                             {/*</Typography>*/}

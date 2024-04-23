@@ -10,27 +10,33 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
-import Link from "@mui/material/Link";
 import CopyrightApp from "../common/Copyright/CopyrightApp.jsx";
 import * as React from "react";
+import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
+import ChangeLang from "../common/ChangeLang.jsx";
 
 export default function Login() {
+    const { t } = useTranslation();
+
     return (
-        <div>
+        <div className="login-form">
+            <ChangeLang></ChangeLang>
             <Box sx={{
-                    my: 8,
+                    my: 10,
                     mx: 4,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    maxWidth: '600px'
+                    maxWidth: '32em',
+                    maxHeight: '30em'
                 }}>
                 {/*Heading login*/}
                 <Avatar sx={{ m: 1, bgcolor: lightBlue[400] }}>
                     <CastleIcon/>
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Sign in
+                    { t('signin') }
                 </Typography>
                 {/*Form*/}
                 <Box component="form" noValidate
@@ -40,7 +46,7 @@ export default function Login() {
                         required
                         fullWidth
                         id="email"
-                        label="Email Address"
+                        label={ t('emailAddress') }
                         name="email"
                         autoComplete="email"
                         autoFocus
@@ -50,7 +56,7 @@ export default function Login() {
                         required
                         fullWidth
                         name="password"
-                        label="Password"
+                        label={ t('password') }
                         type="password"
                         id="password"
                         autoComplete="current-password"
@@ -58,7 +64,7 @@ export default function Login() {
 
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
+                        label={ t('rememberMe') }
                     />
                     <Button
                         type="submit"
@@ -66,17 +72,17 @@ export default function Login() {
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
                     >
-                        Sign In
+                        { t('signin') }
                     </Button>
                     <Grid container>
-                        <Grid item xs>
-                            <Link href="/forgotpassword" variant="body2">
-                                Forgot password?
+                        <Grid xs>
+                            <Link to="/forgotpassword" variant="body2">
+                            { t('forgotPassword') }
                             </Link>
                         </Grid>
-                        <Grid item>
-                            <Link href="/signup" variant="body2">
-                                {"Don't have an account? Sign Up"}
+                        <Grid>
+                            <Link to="/signup" variant="body2">
+                            { t('signUp') }
                             </Link>
                         </Grid>
                     </Grid>

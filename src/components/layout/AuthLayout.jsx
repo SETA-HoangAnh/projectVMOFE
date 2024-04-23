@@ -13,6 +13,7 @@ import NewPassword from "../auth/NewPassword.jsx";
 import GoogleAuthen from "../auth/GoogleAuthen.jsx";
 import InputAuthen from "../auth/InputAuthen.jsx";
 
+
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -29,7 +30,7 @@ export default function AuthLayout() {
             justifyContent: 'center',
             alignItems: 'center',
             height: '100vh',
-            backgroundImage: 'url("src/assets/image/background.jpg")',
+            // backgroundImage: 'url("src/assets/image/background.jpg")',
             backgroundSize: 'cover' }}>
             <CssBaseline />
 
@@ -39,7 +40,7 @@ export default function AuthLayout() {
                 alignItems: 'center',
             }}>
 
-                <Grid xs={10}>
+                <Grid >
                     <Item>
                         <BrowserRouter>
                             <Routes>
