@@ -1,5 +1,3 @@
-import {styled} from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import CastleIcon from "@mui/icons-material/Castle";
@@ -8,18 +6,14 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Link } from "react-router-dom";
 import CopyrightApp from "../common/Copyright/CopyrightApp.jsx";
-import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
-import {DatePicker} from "@mui/x-date-pickers/DatePicker";
-import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import * as React from "react";
 import ChangeLang from "../common/ChangeLang.jsx";
-
-
+import {useTranslation} from "react-i18next";
 
 
 export default function NewPassword() {
+    const {t} = useTranslation();
     return (
         <div>
             <ChangeLang></ChangeLang>
@@ -38,7 +32,7 @@ export default function NewPassword() {
                 <Typography component="h1" variant="h5" sx={{ 
                         marginBottom: '20px'
                      }}>
-                    New password
+                    {t('new-password')}
                 </Typography>
                 {/*Form*/}
                 <Box component="form" noValidate

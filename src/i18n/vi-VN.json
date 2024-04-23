@@ -1,9 +1,24 @@
 {
     "locale": "EN",
-    "signin": "Đăng nhập",
-    "emailAddress": "Địa chỉ email",
+    "sign-in": "Đăng nhập",
+    "email-address": "Địa chỉ email",
     "password": "Mật khẩu",
-    "rememberMe": "Ghi nhớ tài khoản",
-    "forgotPassword": "Quên mật khẩu?",
-    "signUp": "Không có tài khoản? Đăng kí ngay"
+    "remember-me": "Ghi nhớ tài khoản",
+    "forgot-password": "Quên mật khẩu?",
+    "sign-up": "Đăng ký",
+    "have-account": "Đã có tài khoản?",
+    "log-in": "Đăng nhập",
+    "download-authenticator": "Hãy tải ứng dụng Microsoft Authenticator để quét mã QR",
+    "next": "Tiếp theo",
+    "full-name": "Họ và tên",
+    "date-of-birth": "Ngày sinh",
+    "forgot-account": "Tìm tài khoản",
+    "title-forgot-password": "Quên mật khẩu",
+    "verification" : "Xác thực OTP",
+    "send": "Gửi",
+    "OTP" : "OTP",
+    "OTP-instruction": "Vui lòng điền OTP chúng tôi vừa gửi đến email của bạn",
+    "new-password": "Mật khẩu mới",
+    "OTP-check": "Vui lòng kiểm tra email để xem OTP."
+
 }
