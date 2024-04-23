@@ -25,32 +25,6 @@ export default function OtpCheck() {
     const location = useLocation();
     console.log('param', location.state);
     
-
-    // function checkOtp(navigate) {
-    //     var totp = document.getElementById('otpInput').value;
-    //     const endpoint = "http://localhost:8080/api/auth/user/otp-verify";
-    
-    //     const dataToSend = {
-    //         totp: totp
-            
-    //     };
-    
-    //     axios.post(endpoint, dataToSend, {
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'LOCALE': localStorage.getItem('LOCALE')
-    //         }
-    //     })
-    //     .then(response => {
-    //         navigate('/new-password', {state: {
-    //             email: "123"
-    //         }} )
-    //     })
-    //     .catch(error => {
-    //         alert(error.response.data);
-    //     });
-    // }
-
     function checkOtp() {
         var totp = document.getElementById('otpInput').value;
         const endpoint = "http://localhost:8080/api/v1/authenticate/verify";
@@ -67,12 +41,10 @@ export default function OtpCheck() {
             }
         })
         .then(response => {
-            // navigate('/new-password', {state: {
-            //     email: "123"
-            // }})
+            navigate('/')
         })
         .catch(error => {
-            alert(error.response.data);
+            alert("error");
         });
     }
 

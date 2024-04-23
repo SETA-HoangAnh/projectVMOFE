@@ -69,15 +69,7 @@ export default function AuthLayout() {
                                     <NewPassword></NewPassword>
                                 } />
 
-                                {/*QR scan form*/}
-                                <Route path="/qrscan" element= {
-                                    <GoogleAuthen></GoogleAuthen>
-                                } />
 
-                                {/*Input authenticator form*/}
-                                <Route path="/inputCode" element= {
-                                    <InputAuthen></InputAuthen>
-                                } />
                             </Routes>
                         </BrowserRouter>
                     </Item>

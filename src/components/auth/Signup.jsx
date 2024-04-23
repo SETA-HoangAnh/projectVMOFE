@@ -129,7 +129,7 @@ export default function Signup() {
                     />
                     <TextField
                         margin="normal"
-                        required
+                        require
                         fullWidth
                         id="fullName"
                         label="Fullname"

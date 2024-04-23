@@ -20,37 +20,36 @@ import ChangeLang from "../common/ChangeLang.jsx";
 import { useTranslation } from 'react-i18next';
 
 
-function checkEmail(navigate) {
-    var email = document.getElementById('email').value;
-    const endpoint = "http://localhost:8080/api/v1/auth/send-otp";
-
-    const dataToSend = {
-        email: email
-    };
-
-    axios.post(endpoint, dataToSend, {
-        headers: {
-            'Content-Type': 'application/json',
-            'LOCALE': localStorage.getItem('LOCALE')
-        }
-    })
-    .then(response => {
-        if (response.data) {
-            alert(response);
-
-        } else {
-            alert('No data received from server');
-        }
-    })
-    .catch(error => {
-        alert(error.response.data.email ? error.response.data.email : error.response.data)
-    });
-}
 
 
 export default function ForgotPassword() {
     const navigate = useNavigate();
     const { t } = useTranslation();
+
+    
+
+    function checkEmail() {
+        var email = document.getElementById('email').value;
+        const endpoint = "http://localhost:8080/api/v1/auth/send-otp";
+    
+        const dataToSend = {
+            email: email
+        };
+    
+        axios.post(endpoint, dataToSend, {
+            headers: {
+                'Content-Type': 'application/json',
+                'LOCALE': localStorage.getItem('LOCALE')
+            }
+        })
+        .then(response => { 
+                navigate('/otpCheck')
+
+        })
+        .catch(error => {
+            console.log(error.response.data.message);
+        });
+    }
     
     return (
         <div>
@@ -91,9 +90,9 @@ export default function ForgotPassword() {
                         autoFocus
                     />
                     <Button
-                        href="/otpCheck"
-                        type="submit"
-                        onClick={() => checkEmail(navigate)}
+                        // href="/otpCheck"
+                        // type="submit"
+                        onClick={() => checkEmail()}
                         fullWidth
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
