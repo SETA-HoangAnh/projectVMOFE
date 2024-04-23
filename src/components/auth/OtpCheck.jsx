@@ -1,5 +1,3 @@
-import {styled} from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import CastleIcon from "@mui/icons-material/Castle";
@@ -8,19 +6,16 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Link } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import CopyrightApp from "../common/Copyright/CopyrightApp.jsx";
-import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
-import {DatePicker} from "@mui/x-date-pickers/DatePicker";
-import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import * as React from "react";
-import { useNavigate, useLocation } from 'react-router-dom';
-import FormDialog from "../auth/FormDialog.jsx";
 import axios from 'axios';
 import ChangeLang from "../common/ChangeLang.jsx";
+import {useTranslation} from "react-i18next";
 
 
 export default function OtpCheck() {
+    const {t} = useTranslation();
     const navigate = useNavigate();
     const location = useLocation();
     console.log('param', location.state);
@@ -52,6 +47,7 @@ export default function OtpCheck() {
     // }
 
     function checkOtp() {
+        const {t} = useTranslation();
         var totp = document.getElementById('otpInput').value;
         const endpoint = "http://localhost:8080/api/v1/authenticate/verify";
     
@@ -67,9 +63,7 @@ export default function OtpCheck() {
             }
         })
         .then(response => {
-            // navigate('/new-password', {state: {
-            //     email: "123"
-            // }})
+            alert("Success")
         })
         .catch(error => {
             alert(error.response.data);
@@ -92,7 +86,7 @@ export default function OtpCheck() {
                     <CastleIcon/>
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    OTP check
+                    {t('verification')}
                 </Typography>
                 {/*Form*/}
                 <Box component="form" noValidate
@@ -109,7 +103,7 @@ export default function OtpCheck() {
                         required
                         fullWidth
                         id="otpInput"
-                        label="OTP"
+                        label={t('OTP')}
                         name="otp"
                         autoComplete="otp"
                         autoFocus
@@ -122,12 +116,12 @@ export default function OtpCheck() {
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
                     >
-                        Send
+                        {t('send')}
                     </Button>
                     <Grid container>
                         <Grid xs>
                             {/*<Typography component="h1" variant="h5">*/}
-                            Fill your OTP we just sent to your email.
+                            {t('OTP-instruction')}
                             {/*</Typography>*/}
                         </Grid>
                     </Grid>

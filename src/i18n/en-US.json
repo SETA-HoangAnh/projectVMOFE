@@ -1,10 +1,24 @@
 {
     "locale": "EN",
-    "signin": "Sign in",
-    "emailAddress": "Email Address",
+    "sign-in": "Sign in",
+    "email-address": "Email Address",
     "password": "Password",
-    "rememberMe": "Remember me",
-    "forgotPassword": "Forgot password?",
-    "signUp": "Don't have an account? Sign Up"
+    "remember-me": "Remember me",
+    "forgot-password": "Forgot password?",
+    "sign-up": "Sign Up",
+    "have-account": "Have an account?",
+    "log-in": "Log in",
+    "download-authenticator": "Please download Microsoft Authenticator to scan the QR code",
+    "next": "Next",
+    "full-name": "Full name",
+    "date-of-birth": "Date of birth",
+    "title-forgot-password": "Forgot password",
+    "verification" : "OTP Verification",
+    "send" : "Send",
+    "OTP" : "OTP",
+    "OTP-instruction": "Please fill in OTP we have just sent to your email.",
+    "new-password": "New password",
+    "OTP-check": "Please check your email to see OTP."
 }
+
 

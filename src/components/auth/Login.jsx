@@ -1,5 +1,3 @@
-import {styled} from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import CastleIcon from "@mui/icons-material/Castle";
@@ -12,8 +10,8 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
 import CopyrightApp from "../common/Copyright/CopyrightApp.jsx";
 import * as React from "react";
-import { Link } from "react-router-dom";
-import { useTranslation } from 'react-i18next';
+import {Link} from "react-router-dom";
+import {useTranslation} from 'react-i18next';
 import ChangeLang from "../common/ChangeLang.jsx";
 
 export default function Login() {
@@ -36,7 +34,7 @@ export default function Login() {
                     <CastleIcon/>
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    { t('signin') }
+                    { t('sign-in') }
                 </Typography>
                 {/*Form*/}
                 <Box component="form" noValidate
@@ -46,7 +44,7 @@ export default function Login() {
                         required
                         fullWidth
                         id="email"
-                        label={ t('emailAddress') }
+                        label={ t('email-address') }
                         name="email"
                         autoComplete="email"
                         autoFocus
@@ -64,7 +62,7 @@ export default function Login() {
 
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
-                        label={ t('rememberMe') }
+                        label={ t('remember-me') }
                     />
                     <Button
                         type="submit"
@@ -72,17 +70,17 @@ export default function Login() {
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
                     >
-                        { t('signin') }
+                        { t('sign-in') }
                     </Button>
                     <Grid container>
                         <Grid xs>
                             <Link to="/forgotpassword" variant="body2">
-                            { t('forgotPassword') }
+                            { t('forgot-password') }
                             </Link>
                         </Grid>
                         <Grid>
                             <Link to="/signup" variant="body2">
-                            { t('signUp') }
+                            { t('sign-up') }
                             </Link>
                         </Grid>
                     </Grid>

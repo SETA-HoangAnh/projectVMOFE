@@ -1,5 +1,3 @@
-import {styled} from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import CastleIcon from "@mui/icons-material/Castle";
@@ -8,21 +6,19 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import CopyrightApp from "../common/Copyright/CopyrightApp.jsx";
-import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
-import {DatePicker} from "@mui/x-date-pickers/DatePicker";
-import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import * as React from "react";
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import ChangeLang from "../common/ChangeLang.jsx";
+import {useTranslation} from "react-i18next";
 
 export default function Signup() {
+    const {t} = useTranslation();
     const navigate = useNavigate();
 
     const [open, setOpen] = React.useState(false);
@@ -93,7 +89,7 @@ export default function Signup() {
                     <CastleIcon/>
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Sign up
+                    {t('sign-up')}
                 </Typography>
                 {/*Form*/}
                 <Box component="form" noValidate
@@ -112,7 +108,7 @@ export default function Signup() {
                         required
                         fullWidth
                         id="email"
-                        label="Email Address"
+                        label= {t('email-address')}
                         name="email"
                         autoComplete="email"
                         autoFocus
@@ -122,7 +118,7 @@ export default function Signup() {
                         required
                         fullWidth
                         name="password"
-                        label="Password"
+                        label={t('password')}
                         type="password"
                         id="password"
                         autoComplete="current-password"
@@ -132,7 +128,7 @@ export default function Signup() {
                         required
                         fullWidth
                         id="fullName"
-                        label="Fullname"
+                        label={t('full-name')}
                         name="fullName"
                         autoComplete="fullName"
                         autoFocus
@@ -142,7 +138,7 @@ export default function Signup() {
                         fullWidth
                         name="dateOfBirth"
                         id="dateOfBirth"
-                        label="Date of birth"
+                        label= {t('date-of-birth')}
                         InputLabelProps={{ shrink: true, required: true }}
                         type="date"
                     />
@@ -156,17 +152,17 @@ export default function Signup() {
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
                     >
-                        Sign Up
+                        {t('sign-up')}
                     </Button>
                     <Grid container>
                         <Grid xs>
                             {/*<Typography component="h1" variant="h5">*/}
-                                Have an account?
+                            {t('have-account')}
                             {/*</Typography>*/}
                         </Grid>
                         <Grid>
                             <Link to="/" variant="body2">
-                                {"Login"}
+                                {t('log-in')}
                             </Link>
                         </Grid>
                     </Grid>
@@ -179,12 +175,12 @@ export default function Signup() {
         open={open}
         onClose={handleClose}
       >
-        <DialogTitle>Let's download Google Authenticator to scan</DialogTitle>
+        <DialogTitle>{t('download-authenticator')}</DialogTitle>
         <DialogContent>
           <img src={ dataQR?.qrCode }></img>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleNext}>Next</Button>
+          <Button onClick={handleNext}>{t('next')}</Button>
         </DialogActions>
       </Dialog>
         </div>

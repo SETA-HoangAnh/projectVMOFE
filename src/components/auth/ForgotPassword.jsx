@@ -1,5 +1,3 @@
-import {styled} from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import CastleIcon from "@mui/icons-material/Castle";
@@ -8,19 +6,16 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Link } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import CopyrightApp from "../common/Copyright/CopyrightApp.jsx";
-import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
-import {DatePicker} from "@mui/x-date-pickers/DatePicker";
-import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import * as React from "react";
-import { useNavigate  } from 'react-router-dom';
 import ChangeLang from "../common/ChangeLang.jsx";
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 
 function checkEmail(navigate) {
+    const {t} = useTranslation();
     var email = document.getElementById('email').value;
     const endpoint = "http://localhost:8080/api/v1/auth/send-otp";
 
@@ -68,7 +63,7 @@ export default function ForgotPassword() {
                     <CastleIcon/>
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Forgot password
+                    {t('title-forgot-password')}
                 </Typography>
                 {/*Form*/}
                 <Box component="form" noValidate
@@ -85,7 +80,7 @@ export default function ForgotPassword() {
                         required
                         fullWidth
                         id="email"
-                        label={ t('emailAddress') }
+                        label={ t('email-address') }
                         name="email"
                         autoComplete="email"
                         autoFocus
@@ -98,12 +93,12 @@ export default function ForgotPassword() {
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
                     >
-                        Send
+                        {t('send')}
                     </Button>
                     <Grid container>
                         <Grid xs>
                             {/*<Typography component="h1" variant="h5">*/}
-                            Please check your email to see your OTP.
+                            {t('OTP-check')}
                             {/*</Typography>*/}
                         </Grid>
                     </Grid>
