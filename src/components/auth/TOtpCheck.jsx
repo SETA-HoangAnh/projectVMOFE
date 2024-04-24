@@ -22,11 +22,11 @@ export default function OtpCheck() {
     console.log('param', location.state);
     
     function checkOtp() {
-        var otp = document.getElementById('otpInput').value;
-        const endpoint = "http://localhost:8080/api/v1/auth/user/otp-verify";
+        var totp = document.getElementById('otpInput').value;
+        const endpoint = "http://localhost:8080/api/v1/authenticate/verify";
     
         const dataToSend = {
-            otp: otp,
+            totp: totp,
             email: location.state?.email
         };
     
@@ -37,12 +37,11 @@ export default function OtpCheck() {
             }
         })
         .then(response => {
-            navigate('/newPassword', { state: { email: location.state?.email } })
+            navigate('/')
         })
         .catch(error => {
             setErrorMessage(error.response.data.message);
         });
-        console.log(dataToSend);
     }
 
     return (

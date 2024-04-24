@@ -8,6 +8,7 @@ import Signup from "../auth/Signup.jsx";
 import {styled} from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import ForgotPassword from "../auth/ForgotPassword.jsx";
+import TOtpCheck from "../auth/TOtpCheck.jsx";
 import OtpCheck from "../auth/OtpCheck.jsx";
 import NewPassword from "../auth/NewPassword.jsx";
 import GoogleAuthen from "../auth/GoogleAuthen.jsx";
@@ -62,6 +63,11 @@ export default function AuthLayout() {
                                 {/*OTP check form*/}
                                 <Route path="/otpCheck" element= {
                                     <OtpCheck></OtpCheck>
+                                } />
+
+                                {/*TOTP check form*/}
+                                <Route path="/totpCheck" element= {
+                                    <TOtpCheck></TOtpCheck>
                                 } />
 
                                 {/*New password form*/}

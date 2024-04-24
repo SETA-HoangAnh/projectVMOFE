@@ -10,21 +10,26 @@ import CopyrightApp from "../common/Copyright/CopyrightApp.jsx";
 import * as React from "react";
 import ChangeLang from "../common/ChangeLang.jsx";
 import {useTranslation} from "react-i18next";
+import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 export default function NewPassword() {
     const {t} = useTranslation();
     const [errorMessage, setErrorMessage] = React.useState("");
+    const location = useLocation();
+    const navigate = useNavigate();
 
     function changePw() {
         var newPassword = document.getElementById('newpassword').value;
-        var confirmpassword = document.getElementById('confirmpassword').value;
+        var confirmPassword = document.getElementById('confirmpassword').value;
 
-        const endpoint = "http://localhost:8080/api/v1/auth/changePassword";
+        const endpoint = "http://localhost:8080/api/v1/auth/user/passwordChange";
     
         const dataToSend = {
             newPassword: newPassword,
-            confirmpassword: confirmpassword
+            confirmPassword: confirmPassword,
+            email: location.state?.email
         };
     
         axios.post(endpoint, dataToSend, {

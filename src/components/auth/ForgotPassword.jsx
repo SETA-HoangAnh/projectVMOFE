@@ -18,7 +18,7 @@ export default function ForgotPassword() {
     const navigate = useNavigate();
     const { t } = useTranslation();
     const [errorMessage, setErrorMessage] = React.useState("");
-    
+    const [email, setEmail] = React.useState(""); 
 
     function checkEmail() {
         var email = document.getElementById('email').value;
@@ -35,8 +35,7 @@ export default function ForgotPassword() {
             }
         })
         .then(response => { 
-                navigate('/otpCheck')
-
+            navigate('/otpCheck', { state: { email: email } });
         })
         .catch(error => {
             setErrorMessage(error.response.data.message);
