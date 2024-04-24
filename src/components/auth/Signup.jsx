@@ -135,6 +135,7 @@ export default function Signup() {
                         autoFocus
                     />
                     <TextField
+                        className="errorCode"
                         margin="normal"
                         fullWidth
                         name="dateOfBirth"

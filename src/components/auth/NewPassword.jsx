@@ -90,6 +90,7 @@ export default function NewPassword() {
                         autoComplete="new-password"
                     />
                     <TextField
+                        className="errorCode"
                         margin="normal"
                         required
                         fullWidth

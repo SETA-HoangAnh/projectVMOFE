@@ -71,7 +71,7 @@ export default function ForgotPassword() {
                         height: '20em'
                      }}>
                     <TextField
-                  
+                        className="errorCode"
                         margin="normal"
                         required
                         fullWidth

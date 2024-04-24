@@ -11,8 +11,9 @@ import ForgotPassword from "../auth/ForgotPassword.jsx";
 import TOtpCheck from "../auth/TOtpCheck.jsx";
 import OtpCheck from "../auth/OtpCheck.jsx";
 import NewPassword from "../auth/NewPassword.jsx";
-import GoogleAuthen from "../auth/GoogleAuthen.jsx";
-import InputAuthen from "../auth/InputAuthen.jsx";
+
+import DashBoard from '../dashboard/DashBoard.jsx';
+
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -73,6 +74,11 @@ export default function AuthLayout() {
                                 {/*New password form*/}
                                 <Route path="/newPassword" element= {
                                     <NewPassword></NewPassword>
+                                } />
+
+                                {/*New password form*/}
+                                <Route path="/dashboard" element= {
+                                    <DashBoard></DashBoard>
                                 } />
 
 

@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
 import CopyrightApp from "../common/Copyright/CopyrightApp.jsx";
 import * as React from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useTranslation} from 'react-i18next';
 import ChangeLang from "../common/ChangeLang.jsx";
 import axios from "axios";
@@ -18,6 +18,7 @@ import axios from "axios";
 export default function Login() {
     const { t } = useTranslation();
     const [errorMessage, setErrorMessage] = React.useState("");
+    const navigate = useNavigate();
 
     function handleLogin() {
         var email = document.getElementById('email').value;
@@ -36,7 +37,7 @@ export default function Login() {
             }
         })
         .then(response => {
-            alert('dang nhap thanh cong');
+            navigate('/dashboard')
         })
         .catch(error => {
             setErrorMessage(error.response.data.message);
@@ -75,6 +76,7 @@ export default function Login() {
                         autoFocus
                     />
                     <TextField
+                        className="errorCode"
                         margin="normal"
                         required
                         fullWidth

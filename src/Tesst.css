@@ -8,3 +8,8 @@ body{
 .login-form{
     height: 2%;
 }
+
+
+.errorCode .MuiFormHelperText-root{
+    color: red;
+}

@@ -21,21 +21,22 @@ const resources = {
     // },
 };
 
+const storedLocale = localStorage.getItem('LOCALE');
+
+
 i18next
-    // .use(languageDetector)
-    // .use(backend)
     .use(initReactI18next)
     .init({
         resources,
-        lng: 'vi',
-        fallbackLng: 'vi', // use en if detected lng is not available
+        lng: storedLocale || 'en',
+        fallbackLng: 'vi',
         interpolation: {
-            escapeValue: false, // react already safes from xss
+            escapeValue: false,
             formatSeparator: ',',
         },
-        // have a common namespace used around the full app
         ns: ['translations'],
         defaultNS: 'translations',
     });
+
 
 export default i18next;

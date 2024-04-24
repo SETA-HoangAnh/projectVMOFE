@@ -74,6 +74,7 @@ export default function OtpCheck() {
                             height: '20em'
                      }}>
                     <TextField
+                        className="errorCode"
                         margin="normal"
                         required
                         fullWidth
