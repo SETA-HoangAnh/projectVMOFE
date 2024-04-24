@@ -14,42 +14,10 @@ import ChangeLang from "../common/ChangeLang.jsx";
 import {useTranslation} from 'react-i18next';
 
 
-<<<<<<< HEAD
-=======
-function checkEmail(navigate) {
-    const {t} = useTranslation();
-    var email = document.getElementById('email').value;
-    const endpoint = "http://localhost:8080/api/v1/auth/send-otp";
-
-    const dataToSend = {
-        email: email
-    };
-
-    axios.post(endpoint, dataToSend, {
-        headers: {
-            'Content-Type': 'application/json',
-            'LOCALE': localStorage.getItem('LOCALE')
-        }
-    })
-    .then(response => {
-        if (response.data) {
-            alert(response);
-
-        } else {
-            alert('No data received from server');
-        }
-    })
-    .catch(error => {
-        alert(error.response.data.email ? error.response.data.email : error.response.data)
-    });
-}
->>>>>>> 672cbe105c687f812a6ca51a33724dc8ab08519b
-
-
 export default function ForgotPassword() {
     const navigate = useNavigate();
     const { t } = useTranslation();
-
+    const [errorMessage, setErrorMessage] = React.useState("");
     
 
     function checkEmail() {
@@ -71,7 +39,7 @@ export default function ForgotPassword() {
 
         })
         .catch(error => {
-            console.log(error.response.data.message);
+            setErrorMessage(error.response.data.message);
         });
     }
     
@@ -104,6 +72,7 @@ export default function ForgotPassword() {
                         height: '20em'
                      }}>
                     <TextField
+                  
                         margin="normal"
                         required
                         fullWidth
@@ -112,6 +81,7 @@ export default function ForgotPassword() {
                         name="email"
                         autoComplete="email"
                         autoFocus
+                        helperText= {errorMessage}
                     />
                     <Button
                         // href="/otpCheck"

@@ -13,10 +13,35 @@ import * as React from "react";
 import {Link} from "react-router-dom";
 import {useTranslation} from 'react-i18next';
 import ChangeLang from "../common/ChangeLang.jsx";
+import axios from "axios";
 
 export default function Login() {
     const { t } = useTranslation();
+    const [errorMessage, setErrorMessage] = React.useState("");
 
+    function handleLogin() {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        const endpoint = "http://localhost:8080/api/v1/authenticate/login";
+    
+        const dataToSend = {
+            email: email,
+            password: password
+        };
+    
+        axios.post(endpoint, dataToSend, {
+            headers: {
+                'Content-Type': 'application/json',
+                'LOCALE': localStorage.getItem('LOCALE')
+            }
+        })
+        .then(response => {
+            alert('dang nhap thanh cong');
+        })
+        .catch(error => {
+            setErrorMessage(error.response.data.message);
+        });
+    }
     return (
         <div className="login-form">
             <ChangeLang></ChangeLang>
@@ -58,6 +83,7 @@ export default function Login() {
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                        helperText= {errorMessage}
                     />
 
                     <FormControlLabel
@@ -65,10 +91,10 @@ export default function Login() {
                         label={ t('remember-me') }
                     />
                     <Button
-                        type="submit"
                         fullWidth
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
+                        onClick={() => handleLogin()}
                     >
                         { t('sign-in') }
                     </Button>

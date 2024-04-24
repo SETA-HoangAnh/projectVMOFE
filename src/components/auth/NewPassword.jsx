@@ -14,6 +14,34 @@ import {useTranslation} from "react-i18next";
 
 export default function NewPassword() {
     const {t} = useTranslation();
+    const [errorMessage, setErrorMessage] = React.useState("");
+
+    function changePw() {
+        var newPassword = document.getElementById('newpassword').value;
+        var confirmpassword = document.getElementById('confirmpassword').value;
+
+        const endpoint = "http://localhost:8080/api/v1/auth/changePassword";
+    
+        const dataToSend = {
+            newPassword: newPassword,
+            confirmpassword: confirmpassword
+        };
+    
+        axios.post(endpoint, dataToSend, {
+            headers: {
+                'Content-Type': 'application/json',
+                'LOCALE': localStorage.getItem('LOCALE')
+            }
+        })
+        .then(response => { 
+                navigate('/')
+
+        })
+        .catch(error => {
+            setErrorMessage(error.response.data.message);
+        });
+    }
+
     return (
         <div>
             <ChangeLang></ChangeLang>
@@ -65,10 +93,10 @@ export default function NewPassword() {
                         type="password"
                         id="confirmpassword"
                         autoComplete="confirm-password"
+                        helperText= {errorMessage}
                     />
                     <Button
-                        href="/"
-                        type="submit"
+                        onClick={() => changePw()}
                         fullWidth
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}

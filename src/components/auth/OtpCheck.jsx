@@ -18,10 +18,10 @@ export default function OtpCheck() {
     const {t} = useTranslation();
     const navigate = useNavigate();
     const location = useLocation();
+    const [errorMessage, setErrorMessage] = React.useState("");
     console.log('param', location.state);
     
     function checkOtp() {
-        const {t} = useTranslation();
         var totp = document.getElementById('otpInput').value;
         const endpoint = "http://localhost:8080/api/v1/authenticate/verify";
     
@@ -40,7 +40,7 @@ export default function OtpCheck() {
             navigate('/')
         })
         .catch(error => {
-            alert("error");
+            setErrorMessage(error.response.data.message);
         });
     }
 
@@ -81,7 +81,10 @@ export default function OtpCheck() {
                         name="otp"
                         autoComplete="otp"
                         autoFocus
+                        helperText = {errorMessage}
+                        variant="standard"
                     />
+                    
                     <Button
                         // href="/newPassword"
                         onClick={checkOtp}

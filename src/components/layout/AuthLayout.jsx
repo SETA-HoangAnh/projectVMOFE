@@ -30,7 +30,7 @@ export default function AuthLayout() {
             justifyContent: 'center',
             alignItems: 'center',
             height: '100vh',
-            // backgroundImage: 'url("src/assets/image/background.jpg")',
+            backgroundImage: 'url("src/assets/image/background.jpg")',
             backgroundSize: 'cover' }}>
             <CssBaseline />
 
@@ -74,7 +74,6 @@ export default function AuthLayout() {
                         </BrowserRouter>
                     </Item>
                 </Grid>
-
             </Grid>
         </Box>
     );

@@ -125,7 +125,7 @@ export default function Signup() {
                     />
                     <TextField
                         margin="normal"
-                        require
+                        required
                         fullWidth
                         id="fullName"
                         label={t('full-name')}
