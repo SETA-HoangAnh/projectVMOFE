@@ -14,7 +14,7 @@ import ChangeLang from "../common/ChangeLang.jsx";
 import {useTranslation} from "react-i18next";
 
 
-export default function OtpCheck() {
+export default function TOtpCheck() {
     const {t} = useTranslation();
     const navigate = useNavigate();
     const location = useLocation();

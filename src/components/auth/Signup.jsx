@@ -20,6 +20,7 @@ import {useTranslation} from "react-i18next";
 export default function Signup() {
     const {t} = useTranslation();
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = React.useState("");
 
     const [open, setOpen] = React.useState(false);
     const [dataQR, setDataQR] = React.useState({});
@@ -31,7 +32,7 @@ export default function Signup() {
     const handleNext = () => {
         setOpen(false);
         // navigate('/otpCheck');
-        navigate('/otpCheck', {state: {
+        navigate('/totpCheck', {state: {
             email: dataQR?.email
         }});
     };
@@ -69,7 +70,7 @@ export default function Signup() {
             }
         })
         .catch(error => {
-            alert(error.response.data.email ? error.response.data.email : error.response.data)
+            setErrorMessage(error.response.data.message);
         });
     }
 
@@ -141,6 +142,7 @@ export default function Signup() {
                         label= {t('date-of-birth')}
                         InputLabelProps={{ shrink: true, required: true }}
                         type="date"
+                        helperText= {errorMessage}
                     />
 
 
