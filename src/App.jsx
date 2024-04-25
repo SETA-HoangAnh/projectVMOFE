@@ -1,3 +1,4 @@
+import DashBoard from "./components/dashboard/DashBoard.jsx";
 import AuthLayout from "./components/layout/AuthLayout.jsx";
 import '../src/assets/css/Tesst.css'
 
