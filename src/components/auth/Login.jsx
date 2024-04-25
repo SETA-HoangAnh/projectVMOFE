@@ -15,6 +15,7 @@ import {useTranslation} from 'react-i18next';
 import ChangeLang from "../common/ChangeLang.jsx";
 import axios from "axios";
 
+
 export default function Login() {
     const { t } = useTranslation();
     const [errorMessage, setErrorMessage] = React.useState("");
@@ -45,7 +46,6 @@ export default function Login() {
     }
     return (
         <div className="login-form">
-            <ChangeLang></ChangeLang>
             <Box sx={{
                     my: 10,
                     mx: 4,
@@ -56,6 +56,7 @@ export default function Login() {
                     maxHeight: '30em'
                 }}>
                 {/*Heading login*/}
+                <ChangeLang></ChangeLang>
                 <Avatar sx={{ m: 1, bgcolor: lightBlue[400] }}>
                     <CastleIcon/>
                 </Avatar>

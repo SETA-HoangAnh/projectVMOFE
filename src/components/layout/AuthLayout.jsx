@@ -11,8 +11,7 @@ import ForgotPassword from "../auth/ForgotPassword.jsx";
 import TOtpCheck from "../auth/TOtpCheck.jsx";
 import OtpCheck from "../auth/OtpCheck.jsx";
 import NewPassword from "../auth/NewPassword.jsx";
-
-import DashBoard from '../dashboard/DashBoard.jsx';
+import Dashboard from "../dashboard/DashBoard";
 
 
 
@@ -26,24 +25,13 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function AuthLayout() {
     return (
-        <Box sx={{
-            flexGrow: 1,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-            backgroundImage: 'url("src/assets/image/background.jpg")',
-            backgroundSize: 'cover' }}>
-            <CssBaseline />
+  
+    
 
-            <Grid container spacing={2} sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}>
+        
 
-                <Grid >
-                    <Item>
+    
+             
                         <BrowserRouter>
                             <Routes>
                                 {/*Log in form*/}
@@ -76,17 +64,14 @@ export default function AuthLayout() {
                                     <NewPassword></NewPassword>
                                 } />
 
-                                {/*New password form*/}
                                 <Route path="/dashboard" element= {
-                                    <DashBoard></DashBoard>
+                                    <Dashboard></Dashboard>
                                 } />
-
 
                             </Routes>
                         </BrowserRouter>
-                    </Item>
-                </Grid>
-            </Grid>
-        </Box>
+           
+  
+   
     );
 }

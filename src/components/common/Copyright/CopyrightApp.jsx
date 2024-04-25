@@ -8,7 +8,6 @@ export default function CopyrightApp(props) {
                 Icetea-Software
             </Link>{' '}
             {new Date().getFullYear()}
-            {'.'}
         </Typography>
     );
 }

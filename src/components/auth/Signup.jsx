@@ -16,6 +16,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import ChangeLang from "../common/ChangeLang.jsx";
 import {useTranslation} from "react-i18next";
+import AppleIcon from '@mui/icons-material/Apple';
+import { Android, Apple, Padding } from "@mui/icons-material";
+import AndroidIcon from '@mui/icons-material/Android';
 
 export default function Signup() {
     const {t} = useTranslation();
@@ -37,14 +40,12 @@ export default function Signup() {
         }});
     };
 
-
     function SignUpHandle() {
         var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
         var fullName = document.getElementById('fullName').value;
         var dateOfBirth = document.getElementById('dateOfBirth').value;
-        const endpoint = "http://localhost:8080/api/v1/authenticate/signup";
-        
+        const endpoint = "http://localhost:8080/api/v1/authenticate/signup"; 
 
         const dataToSend = {
             email: email,
@@ -61,10 +62,8 @@ export default function Signup() {
         })
         .then(response => {
             if (response.data) {
-                // alert(response.data);
                 setDataQR(response.data?.data);
                 setOpen(true);
-                // navigate('/lay-otp');
             } else {
                 alert('No data received from server');
             }
@@ -75,8 +74,7 @@ export default function Signup() {
     }
 
     return (
-        <div>
-            <ChangeLang></ChangeLang>
+        <div className="login-form">
             <Box sx={{
                 my: 8,
                 mx: 4,
@@ -85,6 +83,7 @@ export default function Signup() {
                 alignItems: 'center',
                 maxWidth: '600px',
             }}>
+                <ChangeLang></ChangeLang>
                 {/*Heading login*/}
                 <Avatar sx={{ m: 1, bgcolor: lightBlue[400] }}>
                     <CastleIcon/>
@@ -178,13 +177,21 @@ export default function Signup() {
         open={open}
         onClose={handleClose}
       >
-        <DialogTitle>{t('download-authenticator')}</DialogTitle>
-        <DialogContent>
-          <img src={ dataQR?.qrCode }></img>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleNext}>{t('next')}</Button>
-        </DialogActions>
+        <div className="qrCode">
+            <DialogTitle className="headerr">
+            {t('download-authenticator')}
+            <div className="appLogo">
+                <a href="https://apps.apple.com/us/app/microsoft-authenticator/id983156458"><img src="src\assets\image\app-store-badge.png" alt="" /></a>
+                <a href="https://play.google.com/store/apps/details?id=com.azure.authenticator&hl=en&gl=US"><img src="src\assets\image\en_badge_web_generic.png" alt="" />  </a>
+            </div>
+            </DialogTitle>
+            <DialogContent className="qrImg">
+            <img src={ dataQR?.qrCode }></img>
+            </DialogContent>
+            <DialogActions className="footerNext">
+            <Button onClick={handleNext}>{t('next')}</Button>
+            </DialogActions>
+        </div>
       </Dialog>
         </div>
     )
