@@ -83,12 +83,14 @@ export default function DataTableFinal() {
             status: null
         })
             .then((response) => {
-                const modifiedData = response.data.data.map((user, index) => ({
-                    ...user,
-                    id: index + 1 // Sử dụng thuộc tính userID làm id cho mỗi hàng
-                }));
-                setUsers(modifiedData);
-                console.log(modifiedData);
+                console.log(response.data.data);
+            const modifiedData = response.data.data.map((user, index) => ({
+                ...user,
+                id: index + 1, // Sử dụng thuộc tính userID làm id cho mỗi hàng
+                status: user.status === 1 ? 'active' : user.status // Chuyển đổi giá trị status từ 1 sang 'inactive'
+            }));
+            setUsers(modifiedData);
+            console.log(modifiedData);
             })
             .catch((error) => {
                 console.log(error);

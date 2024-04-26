@@ -48,8 +48,7 @@ export default function NewPassword() {
     }
 
     return (
-        <div>
-            <ChangeLang></ChangeLang>
+        <div className="login-form">
             <Box sx={{
                 my: 8,
                 mx: 4,
@@ -58,6 +57,7 @@ export default function NewPassword() {
                 alignItems: 'center',
                 justifyContent: 'center'
             }}>
+                <ChangeLang></ChangeLang>
                 {/*Heading login*/}
                 <Avatar sx={{ m: 1, bgcolor: lightBlue[400] }}>
                     <CastleIcon/>

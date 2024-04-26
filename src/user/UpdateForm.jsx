@@ -33,15 +33,14 @@ export default function UpdateUser(props) {
     })
         .then(response => {
             alert(t('success-update'));
+            window.location.reload();
             setEmailGet(response.data.data.email);
             // setPasswordGet(response.data.data.email);
             setFullname(response.data.data.fullName);
             setDobGet(response.data.data.dateOfBirth);
-
         })
         .catch(error => {
-            alert(error.response);
-            console(error.response);
+            console.log(error.response);
         });
 };
 
