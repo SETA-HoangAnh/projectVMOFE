@@ -19,6 +19,13 @@
     "OTP" : "OTP",
     "OTP-instruction": "Vui lòng điền OTP chúng tôi vừa gửi đến email của bạn",
     "new-password": "Mật khẩu mới",
-    "OTP-check": "Vui lòng kiểm tra email để xem OTP."
+    "OTP-check": "Vui lòng kiểm tra email để xem OTP.",
+    "cancel": "HUỶ",
+    "update": "CẬP NHẬT",
+    "success-update": "User đã được cập nhật thành công!",
+    "create-user": "Tạo tài khoản",
+    "save": "Thêm mới",
+    "slect": "Lựa chọn",
+    "success-create": "Thêm mới user thành công!"
 
 }

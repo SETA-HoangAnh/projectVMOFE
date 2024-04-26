@@ -18,7 +18,14 @@
     "OTP" : "OTP",
     "OTP-instruction": "Please fill in OTP we have just sent to your email.",
     "new-password": "New password",
-    "OTP-check": "Please check your email to see OTP."
+    "OTP-check": "Please check your email to see OTP.",
+    "cancel": "CANCEL",
+    "update": "UPDATE",
+    "success-update": "User is updated",
+    "create-user": "CREATE USER",
+    "save": "SAVE",
+    "slect": "Slect",
+    "success-create": "User is created"
 }
 
 

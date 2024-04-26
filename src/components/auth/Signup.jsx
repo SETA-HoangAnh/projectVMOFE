@@ -147,8 +147,6 @@ export default function Signup() {
 
 
                     <Button
-                        // href="/qrscan"
-                        // type="submit"
                         fullWidth
                         onClick={() => SignUpHandle()}
                         variant="contained"
@@ -182,7 +180,7 @@ export default function Signup() {
             {t('download-authenticator')}
             <div className="appLogo">
                 <a href="https://apps.apple.com/us/app/microsoft-authenticator/id983156458"><img src="src\assets\image\app-store-badge.png" alt="" /></a>
-                <a href="https://play.google.com/store/apps/details?id=com.azure.authenticator&hl=en&gl=US"><img src="src\assets\image\en_badge_web_generic.png" alt="" />  </a>
+                <a href="https://play.google.com/store/apps/details?id=com.azure.authenticator&hl=en&gl=US"><img src="src\assets\image\en_badge_web_generic.png" alt="" /> </a>
             </div>
             </DialogTitle>
             <DialogContent className="qrImg">
