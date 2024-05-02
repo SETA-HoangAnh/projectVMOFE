@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Loading from './components/common/Loading.jsx';
+import Dashboard from './components/dashboard/DashBoard.jsx';
 
 // const Login = React.lazy(() => import('./auth/Login.jsx'));
 const Login = React.lazy(() => import('./components/auth/Login.jsx'));
@@ -9,7 +10,6 @@ const Signup = React.lazy(() => import('./components/auth/Signup.jsx'));
 const TOtpCheck = React.lazy(() => import('./components/auth/TOtpCheck.jsx'));
 const OtpCheck = React.lazy(() => import('./components/auth/OtpCheck.jsx'));
 const NewPassword = React.lazy(() => import('./components/auth/NewPassword.jsx'));
-const Dashboard = React.lazy(() => import('./components/dashboard/DashBoard'));
 const MainLayout = React.lazy(() => import('./components/common/MainLayout.jsx'));
 const DataTableFinal = React.lazy(() => import('./components/dashboard/DataTableFinal.jsx'));
 
