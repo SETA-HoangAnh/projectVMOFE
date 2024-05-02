@@ -13,8 +13,11 @@ import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/
 import { useTranslation } from 'react-i18next';
 import UpdateUser from '../../user/UpdateForm.jsx';
 import CreateForm from '../../user/CreateForm.jsx';
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 export default function DataTableFinal() {
+
     const { t } = useTranslation();
 
     const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
@@ -57,10 +60,11 @@ export default function DataTableFinal() {
     //Search param:
     const [email, setEmail] = React.useState('');
     const [fullName, setFullName] = React.useState('');
+    const [status, setStatus] = React.useState([]);
 
     useEffect(() => {
         getAllUsers();
-    }, [email, fullName]);
+    }, [email, fullName, status]);
 
     //Handel change search:
     const handleEmailChange = (event) => {
@@ -71,18 +75,29 @@ export default function DataTableFinal() {
         setFullName(event.target.value); // Update email state on input change
     };
 
-    //Get list user function:
+    const handleStatusChange = (event) => {
+        const index = status.indexOf(event.target.value);
+        if (index === -1) {
+            setStatus([...status, event.target.value]);
+        } else {
+            setStatus(status.filter((item) => item !== event.target.value));
+        }
+    };
+
+    // Get list user function:
     const getAllUsers = () => {
         let email = document.getElementById('email').value;
         let fullName = document.getElementById('fullName').value;
 
-        axios.post('http://localhost:8080/api/v1/users/paging', {
+        axios.post(`http://localhost:8080/api/v1/users/paging`, {
             email: email,
             fullName: fullName,
-            status: null
+            status: status.length > 0 ? status : null
         })
             .then((response) => {
                 console.log(response.data.data);
+                const size = response.data.totalItems; // Lưu trữ giá trị length vào biến size
+                console.log(size);
             const modifiedData = response.data.data.map((user, index) => ({
                 ...user,
                 id: index + 1, // Sử dụng thuộc tính userID làm id cho mỗi hàng
@@ -188,6 +203,41 @@ export default function DataTableFinal() {
                         autoFocus
                     />
                 </Grid>
+                {/*Dropdown:*/}
+                <Grid item>
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={status.includes('0')}
+                                onChange={handleStatusChange}
+                                value="0"
+                            />
+                        }
+                        label="Inactive"
+                    />
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={status.includes('1')}
+                                onChange={handleStatusChange}
+                                value="1"
+                            />
+                        }
+                        label="Active"
+                    />
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={status.includes('2')}
+                                onChange={handleStatusChange}
+                                value="2"
+                            />
+                        }
+                        label="Locked"
+                    />
+                </Grid>
+
+
                 <Grid item>
                     <Button
                         onClick={() => handleOpen2()}
