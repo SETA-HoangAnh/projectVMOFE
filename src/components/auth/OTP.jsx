@@ -6,38 +6,17 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
-import {useLocation, useNavigate} from "react-router-dom";
 import CopyrightApp from "../common/Copyright/CopyrightApp.jsx";
 import * as React from "react";
-import axios from 'axios';
 import ChangeLang from "../common/ChangeLangButton.jsx";
 import {useTranslation} from "react-i18next";
-import { checkTOtp } from "../../Apis/auth.js";
 
-
-export default function TOtpCheck() {
+export default function OTP(props) {
     const {t} = useTranslation();
-    const navigate = useNavigate();
-    const location = useLocation();
-    const [errorMessage, setErrorMessage] = React.useState("");
-    console.log('param', location.state);
-    
-    function checkOtp() {
-        var totp = document.getElementById('otpInput').value;
-    
-        // const dataToSend = {
-        //     totp: totp,
-        //     email: location.state?.email
-        // };
-    
-        checkTOtp({totp, email: location.state?.email})
-        .then(response => {
-            navigate('/')
-        })
-        .catch(error => {
-            setErrorMessage(error.response.data.message);
-        });
-    }
+
+    const checkOtp = () => {
+        props.checkOtp();
+    };
 
     return (
         <div className="login-form">
@@ -79,7 +58,7 @@ export default function TOtpCheck() {
                         name="otp"
                         autoComplete="otp"
                         autoFocus
-                        helperText = {errorMessage}
+                        helperText = {props.errorMessage}
                         variant="standard"
                     />
                     

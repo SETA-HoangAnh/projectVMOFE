@@ -9,16 +9,13 @@ import Grid from "@mui/material/Unstable_Grid2";
 import {Link, useNavigate} from "react-router-dom";
 import CopyrightApp from "../common/Copyright/CopyrightApp.jsx";
 import * as React from "react";
-import axios from 'axios';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
-import ChangeLang from "../common/ChangeLang.jsx";
+import ChangeLang from "../common/ChangeLangButton.jsx";
 import {useTranslation} from "react-i18next";
-import AppleIcon from '@mui/icons-material/Apple';
-import { Android, Apple, Padding } from "@mui/icons-material";
-import AndroidIcon from '@mui/icons-material/Android';
+import { signUp } from "../../Apis/auth.js";
 
 export default function Signup() {
     const {t} = useTranslation();
@@ -34,7 +31,6 @@ export default function Signup() {
 
     const handleNext = () => {
         setOpen(false);
-        // navigate('/otpCheck');
         navigate('/totpCheck', {state: {
             email: dataQR?.email
         }});
@@ -45,21 +41,8 @@ export default function Signup() {
         var password = document.getElementById('password').value;
         var fullName = document.getElementById('fullName').value;
         var dateOfBirth = document.getElementById('dateOfBirth').value;
-        const endpoint = "http://localhost:8080/api/v1/authenticate/signup"; 
 
-        const dataToSend = {
-            email: email,
-            password: password,
-            fullName: fullName,
-            dateOfBirth: dateOfBirth
-        };
-
-        axios.post(endpoint, dataToSend, {
-            headers: {
-                'Content-Type': 'application/json',
-                'LOCALE': localStorage.getItem('LOCALE')
-            }
-        })
+        signUp({email, password, fullName, dateOfBirth})
         .then(response => {
             if (response.data) {
                 setDataQR(response.data?.data);
@@ -83,7 +66,9 @@ export default function Signup() {
                 alignItems: 'center',
                 maxWidth: '600px',
             }}>
-                <ChangeLang></ChangeLang>
+                <div className="change-lang">
+                    <ChangeLang></ChangeLang>
+                </div>
                 {/*Heading login*/}
                 <Avatar sx={{ m: 1, bgcolor: lightBlue[400] }}>
                     <CastleIcon/>

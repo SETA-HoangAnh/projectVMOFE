@@ -10,8 +10,9 @@ import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import CopyrightApp from "../common/Copyright/CopyrightApp.jsx";
 import * as React from "react";
-import ChangeLang from "../common/ChangeLang.jsx";
+import ChangeLang from "../common/ChangeLangButton.jsx";
 import {useTranslation} from 'react-i18next';
+import { sendOTP } from "../../Apis/auth.js";
 
 
 export default function ForgotPassword() {
@@ -22,18 +23,7 @@ export default function ForgotPassword() {
 
     function checkEmail() {
         var email = document.getElementById('email').value;
-        const endpoint = "http://localhost:8080/api/v1/auth/send-otp";
-    
-        const dataToSend = {
-            email: email
-        };
-    
-        axios.post(endpoint, dataToSend, {
-            headers: {
-                'Content-Type': 'application/json',
-                'LOCALE': localStorage.getItem('LOCALE')
-            }
-        })
+        sendOTP(email)
         .then(response => { 
             navigate('/otpCheck', { state: { email: email } });
         })
@@ -52,7 +42,9 @@ export default function ForgotPassword() {
                 alignItems: 'center',
                 justifyContent: 'center'
             }}>
-                <ChangeLang></ChangeLang>
+                <div className="change-lang">
+                    <ChangeLang></ChangeLang>
+                </div>
                 {/*Heading login*/}
                 <Avatar sx={{ m: 1, bgcolor: lightBlue[400] }}>
                     <CastleIcon/>

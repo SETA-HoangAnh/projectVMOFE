@@ -15,7 +15,6 @@ import UpdateUser from '../../user/UpdateForm.jsx';
 import CreateForm from '../../user/CreateForm.jsx';
 
 export default function DataTableFinal() {
-    //Handel open dialog:
     const { t } = useTranslation();
 
     const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);

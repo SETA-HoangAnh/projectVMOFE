@@ -2,7 +2,6 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-image: url(src/assets/image/background.jpg);
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -16,7 +15,17 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, .2);
+    box-shadow: 5px 5px 5px rgba(221, 16, 16, 0.2);
+    backdrop-filter: blur(0px);
+    border-radius: 10px;
+}
 
+.change-lang{
+    position: absolute;
+    left: 20px;
+    top: 20px;
 }
 
 .dashboard{
@@ -85,10 +94,6 @@ body{
     
   }
 
-.update-form-container{
-
-
-}
   
 .update-form{
     padding: 30px;
@@ -105,3 +110,59 @@ body{
      display: flex;
      justify-content: space-evenly;
 }
+
+.user-setting{
+    background-color: rgb(81, 126, 134);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    column-gap: 10px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.img-user img{
+    display: flex;
+    border-radius: 20px;
+    width: 70px;
+    height: 56px;
+}
+
+.username ul{
+    list-style: none;
+    padding: 0;
+}
+
+.dropdown-menu{
+    background-color: aliceblue;
+    color: black;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 10px;
+}
+
+.user-setting:hover .dropdown-menu{
+    display: block;
+
+}
+
+#basic-button{
+    color: white;
+    padding: 0;
+    margin-left: 20px;
+}
+
+
+.user-setting2{
+    position: relative;
+}
+
+#basic-menu{
+    margin-top: 10px;
+}
+
+#basic-menu2{
+    margin-top: 10px;
+}
+

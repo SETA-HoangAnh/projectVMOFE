@@ -12,8 +12,8 @@ import CopyrightApp from "../common/Copyright/CopyrightApp.jsx";
 import * as React from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {useTranslation} from 'react-i18next';
-import ChangeLang from "../common/ChangeLang.jsx";
-import axios from "axios";
+import ChangeLang from "../common/ChangeLangButton.jsx";
+import { signIn } from "../../Apis/auth.js";
 
 
 export default function Login() {
@@ -23,20 +23,13 @@ export default function Login() {
 
     function handleLogin() {
         var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value;
-        const endpoint = "http://localhost:8080/api/v1/authenticate/login";
+        var password = document.getElementById('password').value;    
+        // const dataToSend = {
+        //     email: email,
+        //     password: password
+        // };
     
-        const dataToSend = {
-            email: email,
-            password: password
-        };
-    
-        axios.post(endpoint, dataToSend, {
-            headers: {
-                'Content-Type': 'application/json',
-                'LOCALE': localStorage.getItem('LOCALE')
-            }
-        })
+        signIn({email, password})
         .then(response => {
             navigate('/dashboard')
         })
@@ -56,7 +49,9 @@ export default function Login() {
                     maxHeight: '30em'
                 }}>
                 {/*Heading login*/}
-                <ChangeLang></ChangeLang>
+                <div className="change-lang">
+                    <ChangeLang></ChangeLang>
+                </div>
                 <Avatar sx={{ m: 1, bgcolor: lightBlue[400] }}>
                     <CastleIcon/>
                 </Avatar>

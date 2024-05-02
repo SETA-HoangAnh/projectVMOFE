@@ -8,10 +8,11 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
 import CopyrightApp from "../common/Copyright/CopyrightApp.jsx";
 import * as React from "react";
-import ChangeLang from "../common/ChangeLang.jsx";
+import ChangeLang from "../common/ChangeLangButton.jsx";
 import {useTranslation} from "react-i18next";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import { changePassword } from "../../Apis/auth.js";
 
 
 export default function NewPassword() {
@@ -23,24 +24,16 @@ export default function NewPassword() {
     function changePw() {
         var newPassword = document.getElementById('newpassword').value;
         var confirmPassword = document.getElementById('confirmpassword').value;
-
-        const endpoint = "http://localhost:8080/api/v1/auth/user/passwordChange";
     
-        const dataToSend = {
-            newPassword: newPassword,
-            confirmPassword: confirmPassword,
-            email: location.state?.email
-        };
+        // const dataToSend = {
+        //     newPassword: newPassword,
+        //     confirmPassword: confirmPassword,
+        //     email: location.state?.email
+        // };
     
-        axios.post(endpoint, dataToSend, {
-            headers: {
-                'Content-Type': 'application/json',
-                'LOCALE': localStorage.getItem('LOCALE')
-            }
-        })
+        changePassword({newPassword, confirmPassword, email: location.state?.email})
         .then(response => { 
                 navigate('/')
-
         })
         .catch(error => {
             setErrorMessage(error.response.data.message);
@@ -57,7 +50,9 @@ export default function NewPassword() {
                 alignItems: 'center',
                 justifyContent: 'center'
             }}>
-                <ChangeLang></ChangeLang>
+                <div className="change-lang">
+                    <ChangeLang></ChangeLang>
+                </div>
                 {/*Heading login*/}
                 <Avatar sx={{ m: 1, bgcolor: lightBlue[400] }}>
                     <CastleIcon/>
